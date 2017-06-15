@@ -52,8 +52,9 @@ sysv-rc-conf exim4 off
 # Update Files
 apt-file update
 
-# Install Webserver
 cd
+
+# Install Webserver
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/nginx.conf"
@@ -61,6 +62,8 @@ mkdir -p /home/vps/public_html
 echo "<pre>DOCT | Explore Network Unlimited</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/vps.conf"
 service nginx restart
+
+cd
 
 # Install OpenVPN
 wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
@@ -81,6 +84,7 @@ cd /etc/openvpn/
 wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/client-1194.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
+
 cd
 
 # Configure Port SSH
@@ -139,7 +143,6 @@ chmod +x /usr/bin/Restart
 cd
 
 # Finishing
-cd
 chown -R www-data:www-data /home/vps/public_html
 service nginx start
 service openvpn restart
