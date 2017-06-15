@@ -11,7 +11,7 @@ OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
-# Root USer
+# Go to root
 cd
 
 # Disable IPv6
