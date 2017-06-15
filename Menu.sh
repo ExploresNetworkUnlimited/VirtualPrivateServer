@@ -4,7 +4,7 @@
 #
 echo ""
 echo "==============================================="
-echo "MAIN MENU | Available Option List"
+echo "MENU UTAMA | Senarai Pilihan Yang Tersedia"
 echo "==============================================="
 echo " Trial      - Cipta Akaun Percubaan"
 echo " Register   - Buat Akaun Pelanggan"
