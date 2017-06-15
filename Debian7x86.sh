@@ -1,6 +1,9 @@
 #!/bin/bash
+#
 #Original Script Copyright www.fornesia.com
 #By DOCT | Explore Network Unlimited
+#==========================================
+#
 
 # Initialization var
 export DEBIAN_FRONTEND=noninteractive
