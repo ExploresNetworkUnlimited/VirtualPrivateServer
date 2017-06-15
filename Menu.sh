@@ -1,0 +1,25 @@
+#
+#!/bin/bash
+#Script Menu | Available Option List
+#
+echo ""
+echo "==============================================="
+echo "MAIN MENU | Available Option List"
+echo "==============================================="
+echo " Trial      - Cipta Akaun Percubaan"
+echo " Register   - Buat Akaun Pelanggan"
+echo " Customer   - Senarai Akaun Pelanggan"
+echo " Active     - Senarai Akaun Aktif"
+echo " Expired    - Butiran Akaun"
+echo " Expand     - Tambah Tamat Tempoh Akaun"
+echo " Banned     - Melumpuhkan Multi Login"
+echo " Delete     - Memadam Akaun"
+echo " Banner     - Moded Banner SSH"
+echo " Speedtest  - VPS Speedtest"
+echo " Restart    - Perkhidmatan OpenVPN, Dropbear, Webmin, Squid3"
+echo " Reboot     - Rerunning VPS"
+echo " About      - Butiran VPS"
+echo "==============================================="
+echo "DOCTYPE | Explore Network Unlimited"
+echo "==============================================="
+echo ""
