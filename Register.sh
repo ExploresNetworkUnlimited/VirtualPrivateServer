@@ -12,7 +12,7 @@ Exp="$(chage -l $User | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $User &> /dev/null
 
 echo "==============================================="
-echo "Register | Buat Akaun Pelanggan
+echo "Register | Buat Akaun Pelanggan"
 echo "==============================================="
 echo -e " IP Address: $IP" 
 echo -e " Port OpenSSH: 22,80"
