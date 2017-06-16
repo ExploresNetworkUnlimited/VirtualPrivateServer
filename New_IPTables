@@ -1,0 +1,5 @@
+#
+#!/bin/sh
+#Script  New IP Tables
+#
+iptables-restore < /etc/New_IP_Tables.conf
