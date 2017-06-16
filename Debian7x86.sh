@@ -168,6 +168,7 @@ wget -O Active "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateSe
 wget -O Banned "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Banned.sh"
 wget -O Delete "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Delete.sh"
 wget -O Speedtest "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Speedtest.sh"
+wget -O System "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/System.sh"
 wget -O Restart "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Restart.sh"
 
 chmod +x /usr/bin/Menu
