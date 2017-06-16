@@ -123,13 +123,10 @@ hlp () {
 	echo "Usage: bench.sh <option>"
 	echo ""
 	echo "Available options:"
-	echo "No option	: System information, IPv4 only speedtest and disk speed & IOPing benchmark will be run."
+	echo "No option	: System information and disk speed & IOPing benchmark will be run."
 	echo "-sys		: Displays system information such as CPU, amount CPU cores, RAM and more."
 	echo "-io		: Runs a disk speed test and a IOPing benchmark and displays the results."
 	echo "-iops		: Runs a extended IOPing test for latency, reading and et cetera."
-	echo "-b		: Normal benchmark with IPv4 only speedtest, I/O test and Geekbench system benchmark."
-	echo "-b6		: Normal benchmark with IPv6 only speedtest, I/O test and Geekbench system benchmark."
-	echo "-b46		: Normal benchmark with IPv4 and IPv6 speedtest, I/O test and Geekbench system benchmark."
 	echo "-b64		: Same as above."
 	echo "-h		: This help page."
 	echo ""
@@ -141,16 +138,6 @@ case $1 in
 		sysinfo;;
 	'-io')
 		iotest;;
-	'-6' )
-		sysinfo; speedtest6; iotest;;
-	'-46' )
-		sysinfo; speedtest4; speedtest6; iotest;;
-	'-64' )
-		sysinfo; speedtest4; speedtest6; iotest;;
-	'-b' )
-		sysinfo; speedtest4; iotest; gbench;;
-	'-b6' )
-		sysinfo; speedtest6; iotest; gbench;;
 	'-h' )
 		hlp;;
 	*)
