@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Menu | Available Option List
+#Script Menu utama
 #
 echo ""
 echo "==============================================="
