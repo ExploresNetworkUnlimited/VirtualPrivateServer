@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Register/Create Account SSH & VPN
+#Script buat akaun SSH/VPN
 #
 read -p " Username : " User
 read -p " Password : " Pass
