@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Disable/Kill Multi Login
+#Script memusnahkan akaun log masuk [+]
 # 
 PARAM=$1
 echo -n > /tmp/pid2
