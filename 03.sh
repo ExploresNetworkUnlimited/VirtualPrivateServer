@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Customer List
+#Script senarai akaun pelanggan
 #
 echo "==============================================="
 echo "USERNAME           EXPIRED DATE           "
