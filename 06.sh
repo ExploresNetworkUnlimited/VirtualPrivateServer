@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Delete Account SSH & VPN
+#Script hapus akaun SSH/VPN
 #
 read -p "Username Account going to be delete: " USer
 userdel -r $User
