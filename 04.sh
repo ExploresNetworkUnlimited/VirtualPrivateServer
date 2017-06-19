@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Online User List
+#Script senarai akaun aktif
 #
 data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
 
