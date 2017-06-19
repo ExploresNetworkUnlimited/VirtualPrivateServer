@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Script Trial Account SSH & VPN
+#Script cipta akaun percubaan SSH/VPN
 #
 IP=`dig +short myip.opendns.com @resolver1.opendns.com`
 
