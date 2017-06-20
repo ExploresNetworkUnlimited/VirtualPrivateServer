@@ -72,6 +72,15 @@ cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 apt-get update
 
 ############################
+# Install screenfetch
+############################
+wget https://github.com/KittyKatt/screenFetch/raw/master/screenfetch-dev
+mv screenfetch-dev /usr/bin/screenfetch
+chmod +x /usr/bin/screenfetch
+echo "clear" >> .profile
+echo "screenfetch" >> .profile
+
+############################
 # Install Nginx
 ############################
 apt-get -y install nginx
