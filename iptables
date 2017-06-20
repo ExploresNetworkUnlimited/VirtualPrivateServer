@@ -3,4 +3,4 @@
 #DOCT | Malaysian Phreaker Knowledge
 #Script new iptables
 #
-iptables-restore < /etc/iptables_yg_baru_dibikin.conf
+iptables-restore < /etc/new_iptables.conf
