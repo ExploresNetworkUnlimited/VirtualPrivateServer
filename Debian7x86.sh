@@ -227,10 +227,6 @@ echo "Installing OpenVPN"
 echo "Installing Dropbear"
 echo "Installing Webmin"
 echo "Installing Squid3"
-echo "Menu utama"
-echo "Trial"
-echo ""
-echo ""
 echo ""
 
 ############################
