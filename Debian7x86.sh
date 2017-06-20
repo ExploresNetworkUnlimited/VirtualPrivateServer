@@ -1,5 +1,5 @@
-#!/bin/bash
 #
+#!/bin/bash
 #Original Script Copyright www.fornesia.com
 #By DOCT | Explore Network Unlimited
 #
@@ -42,7 +42,7 @@ service ssh restart
 ############################
 # Set Repo
 ############################
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Sources.List.Debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
@@ -84,7 +84,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>DOCT | Explore Network Unlimited</pre>" > /home/vps/public_html/index.html
+echo "<pre>DOCT | Malaysian Phreaker Knowledge</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/vps.conf"
 service nginx restart
 
@@ -96,13 +96,13 @@ cd
 wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/openvpn.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
-iptables-save > /etc/iptables_yg_baru_dibikin.conf
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/iptables"
+iptables-save > /etc/new_iptables.conf
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
@@ -110,7 +110,7 @@ service openvpn restart
 # Configure OpenVPN
 ############################
 cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/client-1194.conf"
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/client.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
 
@@ -141,7 +141,7 @@ cd
 # Install Squid3
 ############################
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -199,6 +199,16 @@ rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
 cd
+
+############################
+# About
+############################
+echo "Installing OpenSSH"
+echo "Installing OpenVPN"
+echo "Installing Dropbear"
+echo "Installing Webmin"
+echo "Installing Squid3"
+
 
 rm -f Debian7x86.sh
 
