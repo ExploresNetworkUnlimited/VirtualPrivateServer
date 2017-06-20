@@ -161,15 +161,15 @@ service webmin restart
 ############################
 cd /usr/bin
 wget -O Menu "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Menu.sh"
-wget -O Trial "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
-wget -O Register "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/02.sh"
-wget -O Customer "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/03.sh"
-wget -O Active "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/04.sh"
-wget -O Banned "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/05.sh"
-wget -O Delete "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/06.sh"
-wget -O Speedtest "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/07.sh"
-wget -O System "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/08.sh"
-wget -O Restart "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/09.sh"
+wget -O 01 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
+wget -O 02 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/02.sh"
+wget -O 03 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/03.sh"
+wget -O 04 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/04.sh"
+wget -O 05 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/05.sh"
+wget -O 06 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/06.sh"
+wget -O 07 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/07.sh"
+wget -O 08 "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/08.sh"
+wget -O 09 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/09.sh"
 
 chmod +x /usr/bin/Menu
 chmod +x /usr/bin/01
