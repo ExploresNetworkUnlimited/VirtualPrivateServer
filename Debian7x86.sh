@@ -161,25 +161,26 @@ service webmin restart
 ############################
 cd /usr/bin
 wget -O Menu "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Menu.sh"
-wget -O Trial "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Trial.sh"
-wget -O Register "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Register.sh"
-wget -O Customer "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Customer.sh"
-wget -O Active "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Active.sh"
-wget -O Banned "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Banned.sh"
-wget -O Delete "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Delete.sh"
-wget -O Speedtest "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Speedtest.sh"
-wget -O System "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/System.sh"
-wget -O Restart "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Restart.sh"
+wget -O Trial "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
+wget -O Register "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/02.sh"
+wget -O Customer "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/03.sh"
+wget -O Active "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/04.sh"
+wget -O Banned "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/05.sh"
+wget -O Delete "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/06.sh"
+wget -O Speedtest "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/07.sh"
+wget -O System "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/08.sh"
+wget -O Restart "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/09.sh"
 
 chmod +x /usr/bin/Menu
-chmod +x /usr/bin/Trial
-chmod +x /usr/bin/Register
-chmod +x /usr/bin/Customer
-chmod +x /usr/bin/Active
-chmod +x /usr/bin/Banned
-chmod +x /usr/bin/Delete
-chmod +x /usr/bin/Speedtest
-chmod +x /usr/bin/Restart
+chmod +x /usr/bin/01
+chmod +x /usr/bin/02
+chmod +x /usr/bin/03
+chmod +x /usr/bin/04
+chmod +x /usr/bin/05
+chmod +x /usr/bin/06
+chmod +x /usr/bin/07
+chmod +x /usr/bin/08
+chmod +x /usr/bin/09
 
 cd
 
@@ -199,7 +200,6 @@ echo "unset HISTFILE" >> /etc/profile
 
 cd
 
-rm -f debian7.sh
-rm -f log-install.txt
+rm -f Debian7x86.sh
 
 echo "Please Reboot VPS"
