@@ -5,6 +5,11 @@
 #
 
 ############################
+# Update & Upgrade
+############################
+apt-get update; apt-get -y upgrade
+
+############################
 # Initialization var
 ############################
 export DEBIAN_FRONTEND=noninteractive
@@ -29,7 +34,7 @@ apt-get -y --purge remove bind9*;
 ############################
 # Install Wget & Curl
 ############################
-apt-get update; apt-get -y install wget curl;
+apt-get -y install wget curl;
 
 ############################
 # Set Time To GMT+8
@@ -203,11 +208,20 @@ cd
 ############################
 # About
 ############################
+echo ""
+echo "############################"
+echo "Butiran"
+echo "############################"
 echo "Installing OpenSSH"
 echo "Installing OpenVPN"
 echo "Installing Dropbear"
 echo "Installing Webmin"
 echo "Installing Squid3"
+echo "Menu utama"
+echo "Trial"
+echo ""
+echo ""
+echo ""
 
 ############################
 # Finishing
