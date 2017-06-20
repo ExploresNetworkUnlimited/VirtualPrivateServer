@@ -1,6 +1,6 @@
 #
 #!/bin/bash
-#Original Script Copyright www.fornesia.com
+#Original Script by fornesia
 #By DOCT | Explore Network Unlimited
 #
 
@@ -13,15 +13,18 @@ MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 ############################
-# Go to root
-############################
-cd
-
-############################
 # Disable IPv6
 ############################
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+
+############################
+# Remove unused
+############################
+apt-get -y --purge remove samba*;
+apt-get -y --purge remove apache2*;
+apt-get -y --purge remove sendmail*;
+apt-get -y --purge remove bind9*;
 
 ############################
 # Install Wget & Curl
@@ -70,11 +73,6 @@ apt-get -y install build-essential
 service exim4 stop
 sysv-rc-conf exim4 off
 
-############################
-# Update Files
-############################
-apt-file update
-
 cd
 
 ############################
@@ -122,6 +120,8 @@ cd
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 80' /etc/ssh/sshd_config
 service ssh restart
+
+cd
 
 ############################
 # Install Dropbear
@@ -185,7 +185,7 @@ chmod +x /usr/bin/09
 cd
 
 ############################
-# Finishing
+# Start/Stop/Restart service
 ############################
 chown -R www-data:www-data /home/vps/public_html
 service nginx start
@@ -209,7 +209,7 @@ echo "Installing Dropbear"
 echo "Installing Webmin"
 echo "Installing Squid3"
 
-
-rm -f Debian7x86.sh
-
+############################
+# Finishing
+############################
 echo "Please Reboot VPS"
