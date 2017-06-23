@@ -4,99 +4,69 @@
 #By DOCT | Explore Network Unlimited
 #
 
-############################
 # Root user
-############################
 cd
 
-############################
 # Update & Upgrade
-############################
 apt-get update; apt-get -y upgrade
 
-############################
 # Initialization var
-############################
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
-############################
 # Disable IPv6
-############################
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
-############################
 # Remove unused
-############################
 apt-get -y --purge remove samba*;
 apt-get -y --purge remove apache2*;
 apt-get -y --purge remove sendmail*;
 apt-get -y --purge remove bind9*;
 
-############################
 # Install Wget & Curl
-############################
 apt-get -y install wget curl;
 
-############################
 # Set Time To GMT+8
-############################
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 
-############################
 # Set Locale
-############################
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
-############################
 # Set Repo
-############################
 wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Sources.List.Debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
-############################
 # Update
-############################
 apt-get update
 
-############################
 # Install screenfetch
-############################
 wget https://github.com/KittyKatt/screenFetch/raw/master/screenfetch-dev
 mv screenfetch-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
 
-############################
 # Install Nginx
-############################
 apt-get -y install nginx
 
-############################
 # Install Essential Package
-############################
 apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
 apt-get -y install build-essential
 
-############################
 # Disable Exim
-############################
 service exim4 stop
 sysv-rc-conf exim4 off
 
 cd
 
-############################
 # Install Webserver
-############################
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/nginx.conf"
@@ -107,9 +77,7 @@ service nginx restart
 
 cd
 
-############################
 # Install OpenVPN
-############################
 wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
@@ -123,9 +91,7 @@ wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/Explore
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
-############################
 # Configure OpenVPN
-############################
 cd /etc/openvpn/
 wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/client.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
@@ -133,18 +99,14 @@ cp client.ovpn /home/vps/public_html/
 
 cd
 
-############################
 # Configure Port SSH
-############################
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 80' /etc/ssh/sshd_config
 service ssh restart
 
 cd
 
-############################
 # Install Dropbear
-############################
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
@@ -156,9 +118,7 @@ service dropbear restart
 
 cd
 
-############################
 # Install Squid3
-############################
 apt-get -y install squid3
 wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
@@ -166,18 +126,14 @@ service squid3 restart
 
 cd
 
-############################
 # Install Webmin
-############################
 wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
 dpkg -i --force-all webmin-current.deb;
 apt-get -y -f install;
 rm webmin-current.deb
 service webmin restart
 
-############################
 # Command Script
-############################
 cd /usr/bin
 wget -O Menu "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Menu.sh"
 wget -O 01 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
@@ -203,9 +159,7 @@ chmod +x /usr/bin/09
 
 cd
 
-############################
 # Start/Stop/Restart service
-############################
 chown -R www-data:www-data /home/vps/public_html
 service nginx start
 service openvpn restart
@@ -219,9 +173,7 @@ echo "unset HISTFILE" >> /etc/profile
 
 cd
 
-############################
 # About
-############################
 echo ""
 echo "############################"
 echo "Butiran"
@@ -233,7 +185,5 @@ echo "Installing Webmin"
 echo "Installing Squid3"
 echo ""
 
-############################
 # Finishing
-############################
 echo "Please Reboot VPS"
