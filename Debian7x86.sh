@@ -122,7 +122,7 @@ wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/ExploresNetwor
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/new_iptables.conf
 wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
