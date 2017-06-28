@@ -1,116 +1,125 @@
 #
 #!/bin/bash
-#Original Script by fornesia
-#By DOCT | Explore Network Unlimited
-#
+#By Explore Network Unlimited
+# 
 
-# Root user
-cd
-
-# Update & Upgrade
-apt-get update; apt-get -y upgrade
-
-# Initialization var
+#Initialisasi Var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
-# Disable IPv6
+#Root User
+cd
+
+#Disable IPv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
-# Remove unused
-apt-get -y --purge remove samba*;
-apt-get -y --purge remove apache2*;
-apt-get -y --purge remove sendmail*;
-apt-get -y --purge remove bind9*;
-
-# Install Wget & Curl
-apt-get -y install wget curl;
-
-# Set Time To GMT+8
+#Set Localtime
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 
-# Set Locale
+#Install Wget Curl
+apt-get update; apt-get -y install wget curl;
+
+#Set Locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
-# Set Repo
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Sources.List.Debian7"
+#Set Repo
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/FrogyX/Knowledge/master/source.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
-# Update
+#Updating
 apt-get update
 
-# Install screenfetch
-wget https://github.com/KittyKatt/screenFetch/raw/master/screenfetch-dev
-mv screenfetch-dev /usr/bin/screenfetch
-chmod +x /usr/bin/screenfetch
-echo "clear" >> .profile
-echo "screenfetch" >> .profile
-
-# Install Nginx
-apt-get -y install nginx
-
-# Install Essential Package
+#Install Essential Package
 apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
+
+#Install Essential
 apt-get -y install build-essential
 
-# Disable Exim
+#Disable Exim4
 service exim4 stop
-sysv-rc-conf exim4 off
 
 cd
 
-# Install Webserver
-rm /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/nginx.conf"
-mkdir -p /home/vps/public_html
-echo "<pre>DOCT | Malaysian Phreaker Knowledge</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/nifira123/debian7_32bit/master/vps.conf"
+#Install Figlet
+apt-get install figlet
+echo "clear" >> .bashrc
+echo 'figlet -k "$HOSTNAME"' >> .bashrc
+echo 'echo -e "======= Script by Doctype/FrogyX ======="' >> .bashrc
+echo 'echo -e "Contact Us"' >> .bashrc
+echo 'echo -e "Facebook: doct.mpk"' >> .bashrc
+echo 'echo -e "Whatsapp: +60149541324"' >> .bashrc
+echo 'echo -e "Telegram: @Doctype"' >> .bashrc
+echo 'echo -e "===== Malaysian Phreaker Knowledge ====="' >> .bashrc
+echo 'echo -e ""' >> .bashrc
+
+cd
+
+#Install Webmin
+wget -O webmin-current.deb "http://prdownloads.sourceforge.net/webadmin/webmin_1.840_all.deb"
+dpkg -i --force-all webmin-current.deb;
+apt-get -y -f install;
+rm /root/webmin-current.deb
+service webmin restart
+
+cd
+
+#Install Nginx
+apt-get -y install nginx
+
+cd
+
+#Install Webserver
+rm /etc/nginx/sites-enabled
+rm /etc/nginx/sites-available
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/FrogyX/Knowledge/master/nginx.conf"
+mkdir -p /etc/nginx/sites/main
+echo "<center><h1>Doctype | Malaysian Phreaker Knowledge</h1></center>" > /etc/nginx/sites/main/index.html
+wget -O /etc/nginx/conf.d/sites.conf "https://raw.githubusercontent.com/FrogyX/Knowledge/master/sites.conf"
 service nginx restart
+chown -R www-data:www-data /etc/nginx/sites/main
 
 cd
 
-# Install OpenVPN
-wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/arieonline/autoscript/master/conf/openvpn-debian.tar"
-cd /etc/openvpn/
-tar xf openvpn.tar
-wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/server.conf"
-service openvpn restart
-sysctl -w net.ipv4.ip_forward=1
-sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-iptables-save > /etc/new_iptables.conf
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/iptables"
-chmod +x /etc/network/if-up.d/iptables
-service openvpn restart
-
-# Configure OpenVPN
-cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/client.conf"
-sed -i $MYIP2 /etc/openvpn/client.ovpn;
-cp client.ovpn /home/vps/public_html/
-
-cd
-
-# Configure Port SSH
+#Configuring SSH
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 80' /etc/ssh/sshd_config
 service ssh restart
 
 cd
 
-# Install Dropbear
+#Install OpenVPN
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/FrogyX/Knowledge/master/openvpn-debian.tar"
+cd /etc/openvpn/
+tar xf openvpn.tar
+wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/FrogyX/Knowledge/master/server.conf"
+service openvpn restart
+sysctl -w net.ipv4.ip_forward=1
+sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
+iptables-save > /etc/newiptables.conf
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/FrogyX/Knowledge/master/iptables"
+chmod +x /etc/network/if-up.d/iptables
+service openvpn restart
+
+#Configure OpenVPN
+cd /etc/openvpn/
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/FrogyX/Knowledge/master/client.conf"
+sed -i $MYIP2 /etc/openvpn/client.ovpn;
+cp client.ovpn /etc/nginx/sites/main/
+
+cd
+
+#Install Dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 143"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
@@ -118,33 +127,26 @@ service dropbear restart
 
 cd
 
-# Install Squid3
+#Install Squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/FrogyX/Knowledge/master/squid3.sh"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 cd
 
-# Install Webmin
-wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
-dpkg -i --force-all webmin-current.deb;
-apt-get -y -f install;
-rm webmin-current.deb
-service webmin restart
-
-# Command Script
-cd /usr/bin
-wget -O Menu "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Menu.sh"
-wget -O 01 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
-wget -O 02 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/02.sh"
-wget -O 03 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/03.sh"
-wget -O 04 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/04.sh"
-wget -O 05 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/05.sh"
-wget -O 06 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/06.sh"
-wget -O 07 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/07.sh"
-wget -O 08 "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/08.sh"
-wget -O 09 "https://raw.github.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/09.sh"
+#Command script
+wget -O /usr/bin/Menu "https://raw.githubusercontent.com/FrogyX/Knowledge/master/Menu.sh"
+wget -O /usr/bin/01 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/01.sh"
+wget -O /usr/bin/02 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/02.sh"
+wget -O /usr/bin/03 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/03.sh"
+wget -O /usr/bin/04 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/04.sh"
+wget -O /usr/bin/05 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/05.sh"
+wget -O /usr/bin/06 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/06.sh"
+wget -O /usr/bin/07 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/07.sh"
+wget -O /usr/bin/08 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/08.sh"
+wget -O /usr/bin/09 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/09.sh"
+wget -O /usr/bin/10 "https://raw.githubusercontent.com/FrogyX/Knowledge/master/10.sh"
 
 chmod +x /usr/bin/Menu
 chmod +x /usr/bin/01
@@ -156,34 +158,20 @@ chmod +x /usr/bin/06
 chmod +x /usr/bin/07
 chmod +x /usr/bin/08
 chmod +x /usr/bin/09
+chmod +x /usr/bin/10
 
 cd
 
-# Start/Stop/Restart service
-chown -R www-data:www-data /home/vps/public_html
+#Last step
 service nginx start
 service openvpn restart
-service cron restart
 service ssh restart
 service dropbear restart
 service squid3 restart
 service webmin restart
-rm -rf ~/.bash_history && history -c
-echo "unset HISTFILE" >> /etc/profile
 
 cd
 
-# About
+#Finishing
 echo ""
-echo "############################"
-echo "Butiran"
-echo "############################"
-echo "Installing OpenSSH"
-echo "Installing OpenVPN"
-echo "Installing Dropbear"
-echo "Installing Webmin"
-echo "Installing Squid3"
-echo ""
-
-# Finishing
-echo "Please Reboot VPS"
+echo "You need to reboot server."
