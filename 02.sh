@@ -1,7 +1,9 @@
 #
 #!/bin/bash
 #Script cipta akaun SSH/VPN
+#Sunan | Explore Network Unlimited
 #
+
 read -p " Username : " User
 read -p " Password : " Pass
 read -p " Expired  (Days ): " Expday
@@ -15,14 +17,14 @@ echo "==============================================="
 echo "Register | Buat Akaun Pelanggan"
 echo "==============================================="
 echo -e " IP Address: $IP" 
-echo -e " Port OpenSSH: 22,80"
-echo -e " Port Dropbear: 443, 143"
-echo -e " Squid: 80, 8080"
-echo -e " Config OpenVPN: http://$IP:81/client.ovpn"
+echo -e " Port OpenSSH: 22"
+echo -e " Port Dropbear: 443"
+echo -e " Squid: 8080"
+echo -e " Config OpenVPN: http://$IP/client.ovpn"
 echo -e " Username: $User"
 echo -e " Password: $Pass"
 echo -e " Expired Days: $Exp"
 echo "==============================================="
-echo "DOCTYPE | Explore Network Unlimited"
+echo "Sunan | Explore Network Unlimited"
 echo "==============================================="
 echo ""
