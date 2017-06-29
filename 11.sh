@@ -1,6 +1,7 @@
 #
 #!/bin/bash
 #Script Service Restart (OpenSSH, OpenVPN, Dropbear, Webmin & Squid)
+#Sunan | Explore Network Unlimited
 #
 service dropbear restart
 service webmin restart
