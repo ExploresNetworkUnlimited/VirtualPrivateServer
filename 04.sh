@@ -40,6 +40,6 @@ done
 
 echo "";
 echo "==============================================="
-echo "DOCTYPE | Explore Network Unlimited"
+echo "Sunan | Explore Network Unlimited"
 echo "==============================================="
 echo ""
