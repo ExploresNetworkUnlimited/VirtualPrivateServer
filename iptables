@@ -1,0 +1,6 @@
+#
+#!/bin/sh
+#Restore IPTables Change
+#Sunan | Explore Network Unlimited
+#
+iptables-restore < /etc/newiptables.conf
