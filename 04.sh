@@ -1,6 +1,7 @@
 #
 #!/bin/bash
 #Script senarai akaun aktif
+#Sunan | Explore Network Unlimited
 #
 data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
 
