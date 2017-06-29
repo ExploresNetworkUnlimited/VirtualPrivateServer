@@ -1,6 +1,7 @@
 #
 #!/bin/bash
 #Script Menu utama
+#Sunan | Explore Network Unlimited
 #
 echo ""
 echo "==============================================="
@@ -18,6 +19,6 @@ echo " 09 - VPS Speedtest (Speedtest --share)"
 echo " 10 - Butiran System VPS (System VPS information)"
 echo " 11 - Perkhidmatan OpenVPN, Dropbear, Webmin, Squid3"
 echo "==============================================="
-echo "DOCTYPE | Explore Network Unlimited"
+echo "Sunan | Explore Network Unlimited"
 echo "==============================================="
 echo ""
