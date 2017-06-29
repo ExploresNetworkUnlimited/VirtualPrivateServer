@@ -1,6 +1,0 @@
-#
-#!/bin/sh
-#DOCT | Malaysian Phreaker Knowledge
-#Script new iptables
-#
-iptables-restore < /etc/new_iptables.conf
