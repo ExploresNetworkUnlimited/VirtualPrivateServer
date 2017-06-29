@@ -135,7 +135,7 @@ service squid3 restart
 cd
 
 #Command script
-wget -O /usr/bin/Menu "https://raw.githubusercontent.com/FrogyX/Knowledge/master/Menu.sh"
+wget -O /usr/bin/Menu "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/Menu.sh"
 wget -O /usr/bin/01 "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/01.sh"
 wget -O /usr/bin/02 "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/02.sh"
 wget -O /usr/bin/03 "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/03.sh"
