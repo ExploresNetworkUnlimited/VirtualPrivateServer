@@ -1,7 +1,7 @@
 #
 #!/bin/bash
 #Script cipta akaun percubaan SSH/VPN
-#Doctype | Malaysian Phreaker Knowledge
+#Sunan | Explore Network Unlimited
 #
 
 IP=`dig +short myip.opendns.com @resolver1.opendns.com`
