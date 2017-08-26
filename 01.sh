@@ -6,9 +6,9 @@
 
 IP=`dig +short myip.opendns.com @resolver1.opendns.com`
 
-User=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
+User=`</dev/urandom tr -dc X-Z0-9 | head -c5`
 Day="1"
-Pass=Pass `</dev/urandom tr -dc A-C0-9 | head -c9`
+Pass=`</dev/urandom tr -dc A-C0-9 | head -c5`
 
 useradd -e `date -d "$Day days" +"%Y-%m-%d"` -s /bin/false -M $User
 echo -e "$Pass\n$Pass\n"|passwd $User &> /dev/null
