@@ -28,8 +28,8 @@ service ssh restart
 
 #Set Repo
 wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ExploresNetworkUnlimited/VirtualPrivateServer/master/sources.list.debian7"
-wget "http://www.dotdeb.org/dotdeb.gpg"
-wget "http://www.webmin.com/jcameron-key.asc"
+wget "http://mirrors.bangmod.cloud/ubuntu/ jessie"
+wget "http://security.ubuntu.org/ jessie/updates"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
